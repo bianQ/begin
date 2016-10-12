@@ -1,2 +1,1 @@
-Git is a distributed version control system.
-Git is free software.
+一个简单的火车票查询脚本，用法也非常简单
