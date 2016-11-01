@@ -9,9 +9,11 @@ import scrapy
 
 
 class ScrapyItem(scrapy.Item):
-    link = scrapy.Field()
+    jobID = scrapy.Field()
     cname = scrapy.Field()
     title = scrapy.Field()
     salary = scrapy.Field()
     date = scrapy.Field()
-    #info = scrapy.Field()
+    keyword = scrapy.Field()
+    location = scrapy.Field()
+    info = scrapy.Field()
