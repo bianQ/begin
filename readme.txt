@@ -8,3 +8,5 @@ lagou                  面向对象、mongodb 练习
                                
 spider_on_scrapy       scrap初体验
                        添加关键字提取统计，可视化
+                       
+django_project         博客 持续更新
