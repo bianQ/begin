@@ -44,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -126,3 +126,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/blog/login/'
+
+DOMAIN = 'http://127.0.0.1:8000'
+
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_HOST_USER = '15989490620@163.com'
+EMAIL_HOST_PASSWORD = '2dca8f7f1448d3a9'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True

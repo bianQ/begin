@@ -66,9 +66,13 @@ a{ text-decoration:none;}
 </div>
 <div class="header_box_right1">
 <ul>
-<li><a href="">登录</a></li>
-<li>|</li>
-<li><a href="">注册</a></li>
+    {% if request.user.is_authenticated %}
+        <li><a href="{% url 'blog:logout' %}">注销</a></li>
+    {% else %}
+        <li><a href="{% url 'blog:login' %}">登录</a></li>
+        <li>|</li>
+        <li><a href="{% url 'blog:register' %}">注册</a></li>
+    {% endif %}
 </ul>
 </div>
 <div class="header_box_right2">
@@ -87,7 +91,9 @@ a{ text-decoration:none;}
 <li><a href="">首页</a></li>
 <li><a href="">技术问答</a></li>
 <li><a href="">知识库</a></li>
-<li><a href="">个人主页</a></li>
+{% if request.user.is_authenticated %}
+    <li><a href="{% url 'blog:profile' request.user.id %}">个人主页</a></li>
+{% endif %}
 <li><a href="">消息中心</a></li>
 <li><a href="">我的C币</a></li>
 <div class="clearfix"></div>
@@ -100,7 +106,7 @@ a{ text-decoration:none;}
 <li><img src="images/picture.png"></li>
 </ul>
 <ul class="user_left">
-<li>Iam-xyZ</li>
+<li>{{request.user.username}}</li>
 <li><a>中国-北京-东城区&nbsp;&nbsp;&nbsp;|</a></li>
 <li style="width:800px; background-color:#f0f0f0; height:1px;"></li>
 <li><span>没有内容可显示</span></li>
