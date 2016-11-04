@@ -1,0 +1,9 @@
+<h1>Register</h1>
+{% if register_error %}
+    {{ register_error }}
+{% endif %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="提交">
+</form>
