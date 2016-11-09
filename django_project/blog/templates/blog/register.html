@@ -1,9 +1,27 @@
-<h1>Register</h1>
-{% if register_error %}
-    {{ register_error }}
-{% endif %}
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="提交">
-</form>
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}注册账号{% endblock %}
+
+{% block body %}
+<div class="login">
+<div class="banner">
+<a href=""><img src="{% static 'blog/images/banner.png' %}"></a>
+</div>
+<div class="login_box">
+    <form method="post" enctype="multipart/form-data">
+        <div>
+        <h3>注册</h3>
+        {{ form }}
+        </div>
+        <div>
+            <input class="logging" type="submit" value="注册">
+        </div>
+        {% if login_error %}
+            {{ login_error }}
+        {% endif %}
+    </form>
+</div>
+<div class="clearfix"></div>
+</div>
+
+{% endblock %}

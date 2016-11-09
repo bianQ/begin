@@ -10,8 +10,8 @@ class Token:
     def generate_validate_token(self, username):
         return self.serializer.dumps(username, self.salt)
 
-    def confirm_validate_token(self, token, expiration=3600):
-        return self.serializer.loads(token, salt=self.salt)
+    def confirm_validate_token(self, token):
+        return self.serializer.loads(token, salt=self.salt, max_age=3600)
 
     def remove_validate_token(self, token):
         return self.serializer.loads(token, salt=self.salt)

@@ -9,6 +9,9 @@ urlpatterns = [
     url(r'^login/$', views.login, name='login'),
     url(r'^register/$', views.register, name='register'),
     url(r'^logout/$', views.logout, name='logout'),
-    url(r'^([0-9]+)/profile/$', views.profile, name='profile'),
-    url(r'^active/(?P<token>\w+.[-_\w]*\w+.[-_\w]*\w+)/$', views.active, name='active')
+    url(r'^profile/(?P<id>[0-9]+)/$', views.profile, name='profile'),
+    url(r'^active/(?P<token>\w+.[-_\w]*\w+.[-_\w]*\w+)/$', views.active, name='active'),
+    url(r'^getpassword/$', views.getpassword, name='getpassword'),
+    url(r'^changepassword/$', views.changepassword, name='changepassword'),
+    url(r'^newpassword/(?P<token>\w+.[-_\w]*\w+.[-_\w]*\w+)/$', views.newpassword, name='newpassword')
 ]

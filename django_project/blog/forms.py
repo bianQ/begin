@@ -15,12 +15,36 @@ def validators_email(email):
     if User.objects.filter(email=email):
         raise ValidationError('邮箱已注册')
 
+def email_exist(email):
+    if User.objects.filter(email=email) is None:
+        raise ValidationError('邮箱不存在')
+
+def username_exist(username):
+    if User.objects.filter(username=username) is None:
+        raise ValidationError('用户名不存在')
+
 class LoginForm(forms.Form):
-    username = forms.CharField(label='用户名', max_length=16)
-    password = forms.CharField(label='密 码', widget=forms.PasswordInput)
+    username = forms.CharField(label='', widget=forms.TextInput(attrs={'class':'user-name', 'placeholder':'请输入用户名/邮箱/手机号'}))
+    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class':'pass-word', 'placeholder':'请输入密码'}))
 
 class RegisterForm(forms.Form):
-    username = forms.CharField(label='用户名', max_length=16, validators=[validators_username])
-    email = forms.EmailField(label='邮 箱', validators=[validators_email])
-    password1 = forms.CharField(label='密 码', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='确认密码', widget=forms.PasswordInput)
+    username = forms.CharField(label='', max_length=16, validators=[validators_username],
+                               widget=forms.TextInput(attrs={'class':'user-name', 'placeholder':'请输入用户名'}))
+    email = forms.EmailField(label='', validators=[validators_email],
+                             widget=forms.TextInput(attrs={'class':'email', 'placeholder':'请输入邮箱'}))
+    password1 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class':'pass-word', 'placeholder':'请输入密码'}))
+    password2 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class':'pass-word', 'placeholder':'确认密码'}))
+
+class PostForm(forms.Form):
+    pass
+
+class ConfirmEmailForm(forms.Form):
+    username = forms.CharField(label='用户名', max_length=16, validators=[username_exist])
+    email = forms.EmailField(label='邮 箱', validators=[email_exist])
+
+class ChangePasswordForm(forms.Form):
+    pass
+
+class NewPasswordForm(forms.Form):
+    password1 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class':'pass-word', 'placeholder':'请输入新密码'}))
+    password2 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class':'pass-word', 'placeholder':'确认密码'}))

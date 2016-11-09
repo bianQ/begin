@@ -55,7 +55,7 @@ ROOT_URLCONF = 'django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'HOST': '192.168.1.106',
+        'HOST': '192.168.1.102',
         'USER': 'root',
         'PASSWORD': 'root',
         'NAME': 'django',
@@ -125,12 +125,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
 LOGIN_URL = '/blog/login/'
 
 DOMAIN = 'http://127.0.0.1:8000'
 
 EMAIL_HOST = 'smtp.163.com'
 EMAIL_HOST_USER = '15989490620@163.com'
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_PASSWORD = os.environ.get('PASSWORD')
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True

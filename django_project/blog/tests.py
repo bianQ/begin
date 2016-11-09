@@ -2,9 +2,10 @@ from django.test import TestCase
 
 # Create your tests here.
 import re
+import requests
 
-r = '^[A-Za-z][A-Za-z0-9_.]*$'
-d = 'sdf324234f='
-s = re.findall(r,d)
-if s == []:
-    print(1)
+from django.conf import settings
+import os
+
+d = os.environ.get('PASSWORD')
+print(d)
