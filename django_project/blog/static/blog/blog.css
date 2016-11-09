@@ -1,0 +1,83 @@
+body{ margin:0; padding:0; font-family:"微软雅黑"; background-color:white;}
+ul{ margin:0; padding:0;}
+dl,dt,dd{ margin:0; padding:0;}
+li{ list-style:none;}
+a{ text-decoration:none;}
+.header{ background-color:#48525e;}
+.header_box{ width:1200px; height:40px;  background-color:#48525e; margin:0 auto;}
+.header_box_left li{ font-size:22px; color:white; line-height:40px; float:left; margin-right:-70px;}
+.header_box_left img{ width:30%; height:30%; margin-top:3px;}
+.header_box_right1{ margin-left:1030px;}
+.header_box_right1 li{ font-size:14px; color:#dddddd; line-height:40px; float:left; margin-right:6px;}
+.header_box_right1 a{ color:#dddddd;}
+.header_box_right2{ float:right;}
+.header_box_right2 .border{ width:41px; font-size:14px; color:#dddddd; line-height:40px; height:40px; float:left; border-left:1px solid #74797e; border-right:1px solid #74797e;
+ text-align:center;  }
+.header_box_right2 .border:hover{ background-color:white; border-bottom:0;}
+
+.header_box_right2 input{ outline:none; width:200px; height:26px; border:1px solid #ccc; border-right:0;}
+.header_box_right2 button{ width:30px; height:30px; background-color:white; border:1px solid #ccc; border-left:0; margin-top:10px; margin-left:-2px;
+ background-image:url(images/jiantou.png); background-repeat:no-repeat; background-position:center;}
+.header_box_right2 .hide{ margin-left:-196px; border:1px solid #ccc; width:280px; height:49px; display:none; border-top:0; margin-top:0px;}
+.header_box_right2 ul li ul li{ float:left; margin:0 auto;}
+.header_box_right2 ul li ul{ margin:0 auto; width:230px; line-height:48px;}
+.header_box_right2 .border:hover .hide{ display:block;}
+
+.header_box_right2 .hide2{width:352px; border:1px solid #ccc; margin-left:-310px; background-color:white; display:none; text-align:center; border-top:0; position:absolute;
+ z-index:1000px; height:280px}
+.header_box_right2 dl{ float:left; margin:0 13px;}
+.header_box_right2 dt{ font-size:16px; color:black;  border-bottom:1px solid black; text-align:left; height:36px;}
+.header_box_right2 dd{ width:90px; border-bottom:1px solid #ccc; text-align:left; height:36px;}
+.header_box_right2 dd a{ font-size:12px; color:black;}
+.header_box_right2 .border:hover .hide2{ display:block;}
+
+.nav{ background-color:white; border-bottom:1px solid #e1e1e1;}
+.nav_box{ background-color:white; width:1200px; height:49px; margin:0 auto;}
+.nav_box li{ float:left; margin-right:35px;}
+.nav_box a{ color:#727272; line-height:49px;}
+.nav_box li:hover{ border-bottom:1px solid #dc3c00;}
+.bg-img{ background-image:url(images/beijing.png); background-repeat:no-repeat; height:460px; width:100%;
+ font-size:90px; color:white; text-align:center; line-height:460px;}
+.main{ width:1200px; margin:0 auto; margin-top:20px;}
+.main_left{ width:900px; background-color:white; float:left;}
+.main_left_box{ width:838px; margin:0 auto; margin:20px;}
+.main_left_box .title li{ float:left; line-height:50px; font-size:20px; margin-right:10px;}
+
+.content a{ color:#333333;}
+.content dt{ color:#666666;}
+.content dd{ color:#333333; font-size:14px; margin-top:10px; margin-bottom:20px;}
+.content dl{ border-bottom:1px dashed #cccccc; margin-bottom:20px;}
+.footer{ background-color:white; margin-top:20px; padding-bottom:10px;}
+.footer_box{ width:1200px ; background-color:white; margin:0 auto; text-align:center;}
+.footer_box li{ float:left; padding:0 10px; border-right:2px solid #e5d9d1;}
+.footer_box a{ color:#666666; font-size:15px;}
+.content_top{ margin:0 auto; width:1200px; border-bottom:1px solid #e0e0e0; padding:10px 0;}
+.content_top ul{ margin:0 auto; width:850px;}
+.content_center{ font-size:12px; color:#666666; margin:10px 0;}
+.content_center a{ font-size:12px; color:#666666;}
+.content_bottom{ font-size:12px; color:#666666;}
+.main_right{ float:right; width:260px; background-color:white; padding-bottom:20px;}
+.main_right_title{ height:30px; line-height:30px; border-bottom:1px solid #e1e1e1;}
+.main_right_title li{ float:left;}
+.main_right_title button{ background-color:#eaeaea; border:0; margin-left:160px; outline:none;}
+.main_right_title span{ font-size:16px; margin-left:10px;}
+.content_box{ width:193px; margin:0 auto;}
+.content_left{ float:left; text-align:center;}
+.content_right{ margin-left:53px; float:right; text-align:center;}
+.content_box dl{ margin:10px 0; margin-top:20px;}
+.banner{ float:left; width:501px; height:496px; overflow:hidden; position:relative;}
+.login{ width:900px; margin:60px auto;}
+.banner img{ position:absolute; top:0; left:-60px;}
+.login_box{ width:354px; height:500px; border:1px #eaeaea solid; float:right; text-align:center; background-color:white;}
+.login_box h3{ color:#747474;}
+.user-name{ display:block; width:260px; height:40px; margin:20px auto; outline:none; font-size:16px; border:2px solid #e1e1e1; padding-left:10px;}
+.email{ display:block; width:260px; height:40px; margin:20px auto; outline:none; font-size:16px; border:2px solid #e1e1e1; padding-left:10px;}
+.pass-word{ display:block; width:260px; height:40px; margin:20px auto; font-size:16px; border:2px solid #e1e1e1; padding-left:10px;}
+.forget-password{ width:274px; margin:0 auto; text-align:left;}
+.forget-password span{font-size:14px; color:#999999;}
+.forget-password a{ color:#999999; float:right;}
+.rememberMe{ margin-left:0;}
+.logging{ width:274px; height:40px; background-color:#dc3c00; margin-top:20px; font-size:20px; color:white; border:0; margin-bottom:20px;}
+.register span{ display:block; font-size:14px;}
+.register a{ font-size:14px;}
+.clearfix{ clear:both;}
