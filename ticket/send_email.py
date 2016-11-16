@@ -31,7 +31,7 @@ def send(content):
                     <p>你好！</p>
                     <br/>
                     <p>感谢你的使用。</p>
-                    <p>火车票查询结果如下： &nbsp&nbsp&nbsp&nbsp&nbsp <a href="{}">点击跳转到12306官网订票</a></p>
+                    <p>火车票查询结果如下：                   <a href="{}">点击跳转到12306官网订票</a></p>
                     <table>
                     <tr><td>车次</td><td class="width">站点</td><td class="width">时间</td><td class="width">历时</td>
                     <td class="width">一等座</td><td class="width">二等座</td><td class="width">软卧</td><td class=
@@ -44,7 +44,7 @@ def send(content):
             </html>
         '''.format(style, url, content, url)
     msg = MIMEText(message, 'html', 'utf-8')
-    msg['From'] = _format_addr('边权的163邮箱 <%s>' % from_addr)
+    msg['From'] = _format_addr('Python auto-email<%s>' % from_addr)
     msg['To'] = _format_addr('Python <%s>' % to_addr)  #to_addr 为str 多个邮箱用，隔开
     msg['Subject'] = Header('来自Python的测试邮件', 'utf-8').encode()
 
