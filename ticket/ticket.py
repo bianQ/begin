@@ -16,6 +16,7 @@ Example:
 from docopt import docopt
 from prettytable import PrettyTable
 import re, requests
+import send_email
 
 
 city_url = 'https://kyfw.12306.cn/otn/resources/js/framework/station_name.js?station_version=1.8955'
@@ -93,6 +94,7 @@ def get_info(url):
             trains.append(train)
     return trains
 
+#格式化输出显示
 def pretty_print(header, trains):
     pt = PrettyTable()
     pt._set_field_names(header)
@@ -100,9 +102,28 @@ def pretty_print(header, trains):
         pt.add_row(train)
     print(pt)
 
+#判定是否有票，有则生成html语句
+def getHtmlTable(list):
+    content = ''
+    for item in list:
+        #from_to = item[1].replace('\n', ' ')
+        #time = item[2].replace('\n', ' ')
+        for i in item[4:]:
+            if i != '--' and i != '无':
+                content = ''.join((content, '<tr><td>{}</td><td class="width">{}</td><td class="width">{}</td><td class="width">{}</td>'
+                                   '<td class="width">{}</td><td class="width">{}</td><td class="width">{}</td><td class="width'
+                                   '">{}</td><td class="width">{}</td></tr>'.format(item[0], item[1], item[2], item[3],
+                                    item[4], item[5], item[6], item[7], item[8])))
+    return content
 
 if __name__ == '__main__':
-    trains = []
-    header = "车次 站点 时间 历时 一等座 二等座 软卧 硬卧 硬座".split()
-    TrainInfo = get_info(get_StationUrl())
-    pretty_print(header,TrainInfo)
+    flag = True
+    while flag:
+        trains = []
+        #header = "车次 站点 时间 历时 一等座 二等座 软卧 硬卧 硬座".split()
+        TrainInfo = get_info(get_StationUrl())
+        #pretty_print(header,TrainInfo)
+        result = getHtmlTable(TrainInfo)
+        if result != '':
+            send_email.send(result)
+            flag = False
