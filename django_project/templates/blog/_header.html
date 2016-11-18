@@ -1,0 +1,48 @@
+{% load static %}
+<div class="header">
+    <div class="header_box">
+        <div class="header_box_left">
+            <ul>
+                <li><img src="{% static 'blog/images/logo.png' %}"></li>
+                <li>Alan's Blog</li>
+            </ul>
+        </div>
+        <div class="header_box_right1">
+            <ul>
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'blog:logout' %}">注销</a></li>
+                {% else %}
+                    <li><a href="{% url 'blog:login' %}">登录</a></li>
+                    <li>|</li>
+                    <li><a href="{% url 'blog:register' %}">注册</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="header_box_right2">
+            <ul>
+                <li class="border"><img src="{% static 'blog/images/search.png' %}">
+                <div class="hide">
+                    <ul>
+                        <li><input type="text"></li>
+                        <li><button></button></li>
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="nav">
+    <div class="nav_box">
+        <ul>
+            <li><a href="{% url 'blog:index' %}">首页</a></li>
+            <li><a href="{% url 'blog:index' %}">博客</a></li>
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'blog:profile' request.user.username %}">个人信息</a></li>
+            {% endif %}
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+</div>

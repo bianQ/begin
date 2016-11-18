@@ -1,0 +1,51 @@
+{% extends 'blog/base.html' %}
+
+{% include 'blog/_header.html' %}
+
+{% block title %}{{ blog.title }}{% endblock %}
+
+{% block body %}
+
+{% include 'blog/_header.html' %}
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-8">
+                <article class="post post-1 typo">
+                    <header class="entry-header">
+                        <h1 class="entry-title">{{ blog.title }}</h1>
+                        <div class="entry-meta">
+                            <span class="post-date">
+                                <time class="entry-date"
+                                      datetime="2016年8月21日 12:41">{{ blog.pub_date }}
+                                </time>
+                            </span>
+                            {% if blog.author %}
+                            <span class="post-author"><a href="{% url 'blog:profile' blog.author %}">{{ blog.author }}</a></span>
+                            {% endif %}
+                            <span class="comments-link">3 评论</span>
+                            <span class="post-views">1206 阅读</span>
+                        </div>
+                    </header>
+                    <div class="entry-content clearfix">
+                        {{ blog.body }}
+                        <div class="clearfix"></div>
+                    </div>
+                </article>
+                <form id="comment-form" method="post">
+                    <textarea cols="40" maxlength="3000" name="comment" rows="10"></textarea>
+                    <input type="submit" value="回复">
+                </form>
+                <div class="comment-panel">
+                    <img src="">
+                    <a href=""><span>超级管理员</span></a>
+                    <div class="comment-content">
+                        测试一下评论功能如何？
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

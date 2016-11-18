@@ -1,4 +1,30 @@
-<h1>Message</h1>
+{% extends 'blog/base.html' %}
+<head>
+{% block title %}注册{% endblock %}
+<meta http-equiv="refresh" content="5;url=/blog/index.html" />
+</head>
+{% block body %}
+<div class="succeed">
+    <div class="top">
+    {{ message }}
+    </div>
+    {% if flag %}
+    <div class="bottom">
+        <a href="{{ href }}">{{ flag }}</a>
+    </div>
+    {% endif %}
+</div>
+<script>
+$(".post_box_nav li").click(function(){
+	var x=$(this).index()
+		$(".post_box_title").eq(x).show().siblings(".post_box_title").hide()
+	$(this).addClass("bg1").siblings(".post_box_nav li").removeClass("bg1")
+	})
 
-<h2>{{ message }}</h2>
-<a href="{{ href }}">点击跳转</a>
+	$(".data_nav li").click(function(){
+	var x=$(this).index()
+		$(".data_main").eq(x).show().siblings(".data_main").hide()
+	$(this).addClass("bg2").siblings(".data_nav li").removeClass("bg2")
+	})
+</script>
+{% endblock %}

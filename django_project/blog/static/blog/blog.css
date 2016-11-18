@@ -65,11 +65,26 @@ a{ text-decoration:none;}
 .content_left{ float:left; text-align:center;}
 .content_right{ margin-left:53px; float:right; text-align:center;}
 .content_box dl{ margin:10px 0; margin-top:20px;}
+.succeed { width:960px;  border:1px solid #cccccc; margin:100px auto; text-align:center;}
+.succeed .top{ width:600px; margin:0 auto; border-bottom:1px dashed #cccccc; padding:60px 0; font-size:20px; color:#f18628;}
+.succeed .top span{ display:block; font-size:14px; margin-top:30px; color:black;}
+.succeed .bottom a{ display:block; background-color:#3b92d5; width:90px; line-height:40px; margin:0 auto; margin:40px  auto; color:white;}
 .banner{ float:left; width:501px; height:496px; overflow:hidden; position:relative;}
 .login{ width:900px; margin:60px auto;}
 .banner img{ position:absolute; top:0; left:-60px;}
 .login_box{ width:354px; height:500px; border:1px #eaeaea solid; float:right; text-align:center; background-color:white;}
 .login_box h3{ color:#747474;}
+.user{ width:1200px; margin:0 auto; background-color:white; padding-top:20px; height:190px; margin-top:10px;}
+.user_left{ margin-left:30px;}
+.user ul{ float:left;}
+.user li{ font-size:18px;}
+.user span{ font-size:16px; color:#999999;}
+.user_left li{ font-size:18px; margin-top:10px;}
+.user_left a{ font-size:16px;}
+.user_left img{ margin-right:10px;}
+.user_right li{ float:left; background-color:#ececec;  margin-right:10px;}
+.user_right a{ font-size:12px; color:#666666; line-height:22px; text-align:center; display:inline-block;  width:57px; height:22px;}
+.user_right{ float:right; margin-left:40px;}
 .user-name{ display:block; width:260px; height:40px; margin:20px auto; outline:none; font-size:16px; border:2px solid #e1e1e1; padding-left:10px;}
 .email{ display:block; width:260px; height:40px; margin:20px auto; outline:none; font-size:16px; border:2px solid #e1e1e1; padding-left:10px;}
 .pass-word{ display:block; width:260px; height:40px; margin:20px auto; font-size:16px; border:2px solid #e1e1e1; padding-left:10px;}
@@ -80,4 +95,90 @@ a{ text-decoration:none;}
 .logging{ width:274px; height:40px; background-color:#dc3c00; margin-top:20px; font-size:20px; color:white; border:0; margin-bottom:20px;}
 .register span{ display:block; font-size:14px;}
 .register a{ font-size:14px;}
+.post_box_nav li{ float:left; width:119px; height:34px; background-color:#ececec; margin-right:20px; text-align:center; line-height:34px; margin-top:22px;}
+.post_box_title{line-height:24px;}
+.post_box_title ul li {height: 24px;border-bottom-width: 1px;border-bottom-style: dashed;border-bottom-color: #999;padding-top: 12px;padding-bottom: 12px;}
+.post_box_title a{color:#444}
+.post_box_title ul li div {float: left; padding-left: 16px;}
+.post_box_title ul li span {float: right;color: #666;}
+.post_main{ width:1200px; margin:0 auto; background-color:#f7f7f7; line-height:26px; text-indent:2em;}
+.post{ width:860px; height:372px; background-color:white; margin-top:10px;}
+.post_box{ width:808px; background-color:white; margin:0 auto;}
+.post_box_nav .bg1{ background-color:#be1a21; color:white;}
+ul{ margin:0; padding:0;}
+dl,dt,dd{ margin:0; padding:0;}
+li{ list-style:none;}
 .clearfix{ clear:both;}
+
+#pageGro{ text-align:center;}
+#pageGro div,#pageGro div ul li{ font-size:12px; color:#999; line-height:23px; float:left; margin-left:5px;}
+#pageGro div ul li{ width:22px; text-align:center; border:1px solid #999; cursor:pointer;}
+#pageGro div ul li.on{ color:#fff; background:#3c90d9; border:1px solid #3c90d9;}
+#pageGro .pageUp,#pageGro .pageDown{ width:63px; border:1px solid #999; cursor:pointer;}
+#pageGro .pageUp{ text-indent:23px; background:url(images/pageUp.png) 5px 7px no-repeat;}
+#pageGro .pageDown{ text-indent:5px; background:url(images/pageDown.png) 46px 6px no-repeat;}
+
+.data{ width:860px; height:599px; background-color:white; margin-top:10px;}
+.data_nav li{ width:430px; height:48px; float:left; text-align:center; background-color:#eeeeee; line-height:48px; font-size:18px;}
+.data_main_box{ border-bottom:1px solid #f0f0f0; width:818px; margin:0 auto;}
+.data_main_box dt{ margin:32px 0; color:#333333; font-size:18px;}
+.data_main_box dd{ font-size:14px; color:#666666; float:left; margin-right:300px; margin-bottom:20px;}
+.relation{ width:300px; height:134px; background-color:white; float:right; margin-top:10px;}
+.relation_title{ font-size:18px; color:#333333; line-height:52px; border-bottom:1px solid #f0f0f0; margin-left:10px;}
+.relation li{ font-size:14px; color:#999999; margin-top:10px; margin-left:10px;}
+.main_left{ float:left;}
+.data_nav .bg2{ background-color:white; border-top:1px solid #8d8d8d;}
+
+.Pagination{float: right;height: 55px;_height: 45px; line-height: 20px;margin-right: 15px;_margin-right: 5px; color: #565656;margin-top: 10px;_margin-top: 20px; clear:both;}
+.Pagination span{margin-right: 5px;display: block;float: left;margin-left: 5px;}
+.Pagination span b{padding: 0 2px;}
+.Pagination div {float:left}
+.Pagination a{ font-size: 12px;text-decoration: none;display: block;float: left;color: #565656;border: 1px solid #cacaca;height: 20px;line-height: 20px;padding: 0 10px;margin: 0 2px;}
+.Pagination .Ellipsis {line-height: 32px;overflow: hidden; display:none;}
+cite.FormNum{display: block;float: left;line-height: 20px;height: 20px; font-style:  normal; padding-left:10px;}
+#PageNum{ color:#777;width: 30px;height: 20px;line-height: 20px; border: 1px solid #cacaca; margin:0 5px; text-align:center;}
+.Pagination a:hover,.Pagination a.PageCur{background-color: #ee6600;border: 1px solid #d64c01;color: #ffffff; }
+
+a:link,a:visited {text-decoration:none; cursor:pointer;}
+a:hover,a:active {text-decoration: underline;-webkit-transition:color .15s linear , background-color .3s linear;-moz-transition:color .15s linear , background-color .3s linear;-o-transition:color .15s linear , background-color .3s linear;-ms-transition:color .15s linear , background-color .3s linear;transition:color .15s linear , background-color .3s linear; cursor:pointer;}
+.clear {height:0; width:100%; overflow:hidden; clear:both;}
+.clear8 {height:8px; overflow:hidden; clear:both;}
+.float_left{ float:left;}
+.float_right{float:right;}
+
+.title {height: 150px;padding-top: 50px;text-align: center;font-size: 14px;color: #036; line-height:25px;}
+.yongfa {line-height: 25px;}
+.copy {line-height: 25px;text-align: center;}
+.copy a {color: #000;}
+.copy a:hover {color: #F00;padding-bottom: 10px;}
+.title font {font-size: 12px;}
+
+.comment-panel {margin: 0 0 30px 70px;padding: 0 30px;font-size: 14px;position: relative;}
+.comment-panel img {width: 60px;height: 60px;border-radius: 50%;margin-left: -70px;float: left;}
+.comment-panel .comment-content {margin: 20px 0;font-size: 1em;}
+.comment-panel a {text-decoration: none;}
+.comment-panel i {margin-right: 20px;text-decoration: none;}
+.comment-panel time {float: right;}
+
+.content-body {padding-bottom: 4em;}
+.container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:768px){.container{width:750px}}@media (min-width:992px){.container{width:970px}}@media (min-width:1200px){.container{width:1170px}}
+.container-fluid{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
+.row{margin-right:-15px;margin-left:-15px}
+.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9{position:relative;min-height:1px;padding-right:15px;padding-left:15px}
+.entry-title {text-align: center;font-size: 1.9em;margin-bottom: 20px;line-height: 1.6;padding: 10px 20px 0;}
+.entry-meta {text-align: center;color: #DDDDDD;font-size: 13px;letter-spacing: 1px;margin-bottom: 30px;}
+.entry-date {color: #000;}
+.post-views {color: #000;}
+.post-category,
+.post-date,
+.post-author,
+.comments-link {position: relative;padding-right: 15px;;color: #000;}
+.post-category::after,
+.post-date::after,
+.post-author::after,
+.comments-link::after {position: absolute;content: '.';color: #000;font-size: 30px;top: -22px;right: 1px;}
+.entry-content {font-size: 18px;line-height: 1.9;font-weight: 300;color: #000;}
+.post {background: #fff;padding: 30px 30px 0;}
+#comment-form {margin: 50px 0 60px 0;padding: 0 30px;}
+#comment-form textarea {width: 100%;height: 120px;font-size: 15px;margin-bottom: 10px;}
+#comment-form input {background-color: #5bbf5a;border: none;padding: 5px 20px;color: #fff;float: right;}
