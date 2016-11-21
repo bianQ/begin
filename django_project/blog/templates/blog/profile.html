@@ -10,11 +10,13 @@
 
 <div class="user">
     <ul class="user_left">
-        <li><img src="images/picture.png"></li>
+        <img src="{{ userprofile.gravatar }}">
     </ul>
     <ul class="user_left">
         <li>{{ request.user.username }}</li>
-        <li><a>中国-北京-东城区&nbsp;&nbsp;&nbsp;|</a></li>
+        {% if userprofile.location %}
+        <li><a href="{% url 'blog:getmap' userprofile.location %}" target="_blank">{{ userprofile.location }}</a></li>
+        {% endif %}
         <li style="width:800px; background-color:#f0f0f0; height:1px;"></li>
         <li><span>没有内容可显示</span></li>
         <li><a href=""><img src="images/icon1.png"></a><a href=""><img src="images/icon2.png"></a><span style="width:1px; height:20px; background-color:#999999; display:inline-block;"></span>&nbsp;&nbsp;<a href=""><img src="images/icon3.png"></a></li>
@@ -32,6 +34,7 @@
             <div class="post_box">
                 <ul class="post_box_nav">
                     <li class="bg1">发表的博客</li>
+                    <li class="write"><a class="write" href="createblog.html" target="_blank">写博客</a></li>
                     <div class="clearfix"></div>
                 </ul>
                 <div class="post_box_title">
@@ -39,7 +42,7 @@
                         {% if posts %}
                         {% for post in posts %}
                         <li>
-                            <div><a href="{% url 'blog:article' post.id %}">{{ post.title }}</a></div>
+                            <div><a href="{% url 'blog:article' post.id %}" target="_blank">{{ post.title }}</a></div>
                             <span>{{ post.pub_date }}</span>
                         </li>
                         {% endfor %}

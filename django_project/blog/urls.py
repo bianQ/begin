@@ -14,5 +14,7 @@ urlpatterns = [
     url(r'^getpassword/$', views.getpassword, name='getpassword'),
     url(r'^changepassword/$', views.changepassword, name='changepassword'),
     url(r'^newpassword/(?P<token>\w+.[-_\w]*\w+.[-_\w]*\w+)/$', views.newpassword, name='newpassword'),
-    url(r'^article/(?P<id>[0-9]+)/$', views.article, name='article')
+    url(r'^article/(?P<id>[0-9]+)/$', views.article, name='article'),
+    url(r'^getmap/(?P<location>\w+[.\-_\w]*)/$', views.getmap, name='getmap'),
+    url(r'^profile/(?P<username>[A-Za-z][A-Za-z0-9_.]*)/createblog', views.createblog, name='createblog')
 ]

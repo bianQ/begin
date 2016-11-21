@@ -7,10 +7,30 @@
 {% block body %}
 
 {% include 'blog/_header.html' %}
+<div class="user">
+    <ul class="user_left">
+        <a href="{% url 'blog:profile' blog.author %}">
+            <img src="{{ blog.profile.gravatar }}">
+        </a>
+    </ul>
+    <ul class="user_left">
+        <a href="{% url 'blog:profile' blog.author %}">
+            <li>{{ request.user.username }}</li>
+        </a>
+        {% if userprofile.location %}
+        <li><a href="{% url 'blog:getmap' userprofile.location %}" target="_blank">{{ userprofile.location }}</a></li>
+        {% endif %}
+        <li style="width:800px; background-color:#f0f0f0; height:1px;"></li>
+    </ul>
+    <ul class="user_right">
+        <li><a href="">关注</a></li>
+        <li><a href="">发私信</a></li>
+    </ul>
+</div>
 <div class="content-body">
     <div class="container">
         <div class="row">
-            <main class="col-md-8">
+            <main class="col-md-9">
                 <article class="post post-1 typo">
                     <header class="entry-header">
                         <h1 class="entry-title">{{ blog.title }}</h1>
@@ -23,8 +43,12 @@
                             {% if blog.author %}
                             <span class="post-author"><a href="{% url 'blog:profile' blog.author %}">{{ blog.author }}</a></span>
                             {% endif %}
-                            <span class="comments-link">3 评论</span>
-                            <span class="post-views">1206 阅读</span>
+                            {% if comments %}
+                            <span class="comments-link">{{ comments.count }} 评论</span>
+                            {% else %}
+                            <span class="comments-link">{{ comments.count }} 评论</span>
+                            {% endif %}
+                            <span class="post-views">{{ blog.read }} 阅读</span>
                         </div>
                     </header>
                     <div class="entry-content clearfix">
@@ -33,15 +57,22 @@
                     </div>
                 </article>
                 <form id="comment-form" method="post">
-                    <textarea cols="40" maxlength="3000" name="comment" rows="10"></textarea>
+                    {{ form }}
                     <input type="submit" value="回复">
                 </form>
                 <div class="comment-panel">
-                    <img src="">
-                    <a href=""><span>超级管理员</span></a>
+                    {% if comments %}
+                    {% for comment in comments %}
+                    <a href="{% url 'blog:profile' comment.user %}">
+                        <img src="{{ comment.profile.gravatar }}">
+                    </a>
+                    <a href="{% url 'blog:profile' comment.user %}"><span>{{ comment.user }}</span></a>
                     <div class="comment-content">
-                        测试一下评论功能如何？
+                     {{ comment.body }}
                     </div>
+
+                    {% endfor %}
+                    {% endif %}
                 </div>
             </main>
         </div>

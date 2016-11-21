@@ -1,18 +1,20 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
 
 # Create your views here.
 
 from django.contrib import auth
 from django.contrib.auth.models import User
-from .models import Blog
+from .models import Blog, UserProfile, Comment
 from django.conf import settings as django_setting
 from django.core.mail import send_mail
 
-from .forms import LoginForm, RegisterForm, PostForm, ConfirmEmailForm, NewPasswordForm
+from .forms import LoginForm, RegisterForm, PostForm, ConfirmEmailForm, NewPasswordForm, CommentForm
 from .Token import token_confirm
 
+import requests, re
+
 def index(request):
-    posts = Blog.objects.order_by('pub_date')[:6]
+    posts = Blog.objects.order_by('-pub_date')[:6]
     return render(request, 'blog/index.html', {'posts':posts, 'lenth':len(posts)})
 
 #登陆
@@ -55,6 +57,8 @@ def register(request):
             if password1 == password2:
                 user = User.objects.create_user(username=username, password=password1, email=email)
                 user.save()
+                userprofile = UserProfile.objects.create(user_id=user.id)
+                userprofile.save()
                 token = token_confirm.generate_validate_token(username)
                 message = '''
                 你好!
@@ -76,8 +80,13 @@ def register(request):
 
 #用户资料页，待实现
 def profile(request, username):
-    posts = User.objects.get(username=username).blog_set.order_by('pub_date')[:5]
-    return render(request, 'blog/profile.html',{'posts':posts, 'lenth':len(posts)})
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return render(request, 'blog/404.html')
+    userprofile = user.userprofile_set.all().first()
+    posts = user.blog_set.order_by('pub_date')[:5]
+    return render(request, 'blog/profile.html',{'posts':posts, 'userprofile':userprofile})
 
 #邮箱验证，通过则激活账号
 def active(request, token):
@@ -154,18 +163,53 @@ def newpassword(request, token):
 
 #博客详情页
 def article(request, id):
-    blog = Blog.objects.get(id=id)
-    return render(request, 'blog/article.html', {'blog':blog})
+    try:
+        blog = Blog.objects.get(id=id)
+    except Blog.DoesNotExist:
+        return render(request, 'blog/404.html')
+    try:
+        commented = blog.comment_set.all().order_by('-pub_date')
+    except Comment.DoesNotExist:
+        commented = None
+    if request.method == 'GET':
+        form = CommentForm()
+        blog.read += 1
+        blog.save()
+        return render(request, 'blog/article.html', {'blog':blog, 'form':form, 'comments':commented})
+    else:
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            body = form.cleaned_data['comment']
+            profile_id = UserProfile.objects.get(user=request.user).id
+            comment = Comment.objects.create(blog_id=id, user_id=request.user.id, profile_id=profile_id, body=body)
+            comment.save()
+            new_comment = blog.comment_set.all().order_by('-pub_date').order_by('-pub_date')
+            return render(request, 'blog/article.html', {'blog':blog, 'form':form, 'comments':new_comment})
+        return render(request, 'blog/article.html', {'blog': blog, 'form': form, 'comments':commented})
 
-def createblog(request):
+def createblog(request, username):
     if request.method == 'GET':
         form = PostForm()
         return render(request, 'blog/createblog.html', {'form':form})
     else:
+        user = User.objects.get(username=username)
         form = PostForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data['title']
             body = form.cleaned_data['body']
-            blog = Blog.objects.create(author_id=request.user.id, title=title, body=body)
+            profile_id = UserProfile.objects.get(user=user).id
+            blog = Blog.objects.create(author_id=user.id, profile_id=profile_id, title=title, body=body)
+            blog.save()
             return render(request, 'blog/article.html', {'blog':blog})
         return render(request, 'blog/createblog.html', {'form':form})
+
+def getmap(request, location):
+    ak = django_setting.BAIDU_MAP_KEY  #百度地图API key，自行申请
+    url = 'http://api.map.baidu.com/geocoder/v2/?address={location}&output=json&ak={ak}' \
+          '&callback=showLocation'.format(location=location, ak=ak)
+    data = requests.get(url)
+    x = re.findall('"lng":([0-9]+\.[0-9]+)', data.text)[0]
+    y = re.findall('"lat":([0-9]+\.[0-9]+)', data.text)[0]
+    map_url = 'http://map.baidu.com/?latlng={y},{x}' \
+              '&title=我的位置&content={location}&output=html'.format(x=x, y=y, location=location)
+    return redirect(map_url)

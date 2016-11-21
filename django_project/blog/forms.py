@@ -52,8 +52,8 @@ class RegisterForm(forms.Form):
     password2 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class':'pass-word', 'placeholder':'确认密码'}))
 
 class PostForm(forms.Form):
-    title = forms.CharField()
-    body = forms.CharField()
+    title = forms.CharField(label='标题', max_length=30, widget=forms.TextInput(attrs={'class':'form-control'}))
+    body = forms.CharField(label='内容', max_length=3000, widget=forms.Textarea(attrs={'class':'form-control'}))
 
 #找回密码，验证表单
 class ConfirmEmailForm(forms.Form):
@@ -68,3 +68,6 @@ class ChangePasswordForm(forms.Form):
 class NewPasswordForm(forms.Form):
     password1 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class':'pass-word', 'placeholder':'请输入新密码'}))
     password2 = forms.CharField(label='', widget=forms.PasswordInput(attrs={'class':'pass-word', 'placeholder':'确认密码'}))
+
+class CommentForm(forms.Form):
+    comment = forms.CharField(label='', max_length=3000, widget=forms.Textarea())
