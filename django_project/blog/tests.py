@@ -1,13 +1,22 @@
 from django.test import TestCase
 
 # Create your tests here.
-import re
+import os
 import requests
 from lxml import etree
 import threading
 import pymysql
+import hashlib
 
-def getURL(i):
+class AnonymousUser(object):
+    pass
+
+aa = AnonymousUser()
+b = 'df'
+if isinstance(b, AnonymousUser):
+    print(32)
+
+'''def getURL(i):
     start_url = 'http://so.csdn.net/so/search/s.do?q=python&t=blog&p={}'.format(i)
     html = requests.get(start_url, headers=header)
     sel = etree.HTML(html.text)
@@ -32,4 +41,4 @@ if __name__ == '__main__':
     header = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36'}
     for i in range(1,11):
         thread = threading.Thread(target=getURL, args=[i])
-        thread.start()
+        thread.start()'''

@@ -179,12 +179,16 @@ def article(request, id):
     else:
         form = CommentForm(request.POST)
         if form.is_valid():
-            body = form.cleaned_data['comment']
-            profile_id = UserProfile.objects.get(user=request.user).id
-            comment = Comment.objects.create(blog_id=id, user_id=request.user.id, profile_id=profile_id, body=body)
-            comment.save()
-            new_comment = blog.comment_set.all().order_by('-pub_date').order_by('-pub_date')
-            return render(request, 'blog/article.html', {'blog':blog, 'form':form, 'comments':new_comment})
+            if str(request.user) == 'AnonymousUser':
+                form = LoginForm()
+                return render(request, 'blog/login.html', {'form':form})
+            else:
+                body = form.cleaned_data['comment']
+                profile_id = UserProfile.objects.get(user=request.user).id
+                comment = Comment.objects.create(blog_id=id, user_id=request.user.id, profile_id=profile_id, body=body)
+                comment.save()
+                new_comment = blog.comment_set.all().order_by('-pub_date').order_by('-pub_date')
+                return render(request, 'blog/article.html', {'blog':blog, 'form':form, 'comments':new_comment})
         return render(request, 'blog/article.html', {'blog': blog, 'form': form, 'comments':commented})
 
 def createblog(request, username):
